@@ -1,5 +1,4 @@
 import './BookActions.css'
-import {Book} from './RequestSender';
 import { useState } from 'react';
 
 function BookActions(props) {
