@@ -1,0 +1,30 @@
+.BookActions {
+  grid-column: 2/4;
+  grid-row: 2/7;
+  display: flex;
+  justify-content: center;
+  align-items:center;
+  flex-direction: column;
+}
+
+.FormRow {
+  display: inline-block;
+  padding: 10px;
+}
+
+.Form {
+  display: flex;
+  background-color: aliceblue;
+  padding: 10px;
+  border-radius: 30px;
+  justify-content: center;
+  align-items:center;
+  flex-direction: column;
+  margin: 10px;
+  width: 60%;
+  height: auto;
+}
+
+.FormTitle {
+  margin-right: 50%;
+}

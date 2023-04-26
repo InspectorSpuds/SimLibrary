@@ -1,0 +1,11 @@
+.Titlebox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #1c8d12;
+  color: white;
+  list-style: none;
+  line-height: 0;
+  grid-column: 1/4;
+  grid-row: 1/2;
+}

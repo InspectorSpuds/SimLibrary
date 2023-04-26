@@ -1,0 +1,6 @@
+.Main {
+  display: grid;
+  height: 100vh;
+  grid-template-rows: repeat(7, 1fr);
+  grid-template-columns: repeat(3, 1fr);
+}
