@@ -3,38 +3,53 @@ import {Book} from './RequestSender';
 import { useState } from 'react';
 
 function BookActions(props) {
-  const [title, setTitle] = useState("");
-  const [author, setAuthor] = useState("");
-  const [ISBN, setISBN] = useState("");
-  const [delISBN, setDelISBN] = useState("")
+  const [title, setTitle]     = useState("");
+  const [author, setAuthor]   = useState("");
+  const [ISBN, setISBN]       = useState("");
+  const [delISBN, setDelISBN] = useState("");
 
   const addBook = (e) => {
     e.preventDefault();
-    props.addBook(title, author);
+
+    //trim the details
+    setTitle(title => title.trim());
+    setAuthor(author => author.trim());
+    setISBN(ISBN => ISBN.trim());
+
+    if(title !== "" && author !== "" && ISBN !== "") 
+      props.addBook(title, author);
+    else 
+      alert("Error: 1 or more add book fields empty")
   }
 
   const delBook = (e) => {
     e.preventDefault();
-    props.delBook(delISBN);
+
+    setDelISBN(delISBN => delISBN.trim());
+
+    if(delISBN !== "") 
+      props.delBook(delISBN);
+    else 
+      alert("Error: empty ISBN field, cannot delete empty ISBN")
   }
 
   const updateTitle = (val) => {
-    const statee = val.target.value;
+    let statee = val.target.value;
     setTitle(statee);
   }
 
   const updateAuthor = (val) => {
-    const statee = val.target.value;
+    let statee = val.target.value;
     setAuthor(statee);
   }
 
   const updateISBN = (val) => {
-    const statee = val.target.value;
+    let statee = val.target.value;
     setISBN(statee);
   }
 
   const updateDelISBN = (val) => {
-    const statee = val.target.value;
+    let statee = val.target.value;
     setDelISBN(statee);
   }
 
@@ -44,17 +59,17 @@ function BookActions(props) {
         <div className="FormTitle">
           <h2>Add book</h2>
         </div>
-        <div class="FormRow">
+        <div className="FormRow">
           <label>Title: </label>
           <input type="text" value={title} onChange={val => updateTitle(val)} />
         </div> 
-        <div class="FormRow">
+        <div className="FormRow">
           <label>Author: </label>
-          <input type="text" value={author} onchange={val => updateAuthor(val)} />
+          <input type="text" value={author} onChange={val => updateAuthor(val)} />
         </div>
-        <div class="FormRow">
+        <div className="FormRow">
           <label>ISBN: </label>
-          <input type="text" value={ISBN} onchange={val => updateISBN(val)} />
+          <input type="text" value={ISBN} onChange={val => updateISBN(val)} />
         </div>
 
         <input type="submit" value="Submit" />
@@ -66,7 +81,7 @@ function BookActions(props) {
         </div>
         <div class="FormRow">
           <label>ISBN: </label>
-          <input type="text" value={delISBN} onchange={val => updateDelISBN(val)} />
+          <input type="text" value={delISBN} onChange={val => updateDelISBN(val)} />
         </div>
 
         <input type="submit" value="Submit" />
