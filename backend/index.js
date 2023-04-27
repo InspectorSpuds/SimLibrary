@@ -10,6 +10,9 @@ const {DBHandler} = require('./dbhandler.js')
 const app = express()
 const PORT = 4000
 
+let data = 0;
+
+
 //create db connection object and try to connect first and see if that works
 const dbHelper = new DBHandler("127.0.0.1", "ishan", "Ishiraishan#12")
 
