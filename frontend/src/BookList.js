@@ -8,7 +8,9 @@ function BookList(props) {
 
   return (
     <div className="BookList">
-      <ul>{bookList}</ul>
+      <div id="List">
+        <ul>{bookList}</ul>
+      </div>      
     </div>
   )
 }
