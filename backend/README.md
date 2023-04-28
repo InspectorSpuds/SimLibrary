@@ -1,4 +1,4 @@
-# backend
+# Backend
 
 ## Dependencies:
  -Install mysqljs (db requests), expressjs (basic REST routing), and Jest (unit testing)
