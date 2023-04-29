@@ -16,7 +16,7 @@ function BookActions(props) {
     setISBN(ISBN => ISBN.trim());
 
     if(title !== "" && author !== "" && ISBN !== "") 
-      props.addBook(title, author);
+      props.addBook(title, author, ISBN);
     else 
       alert("Error: 1 or more add book fields empty")
   }
@@ -26,7 +26,7 @@ function BookActions(props) {
 
     setDelISBN(delISBN => delISBN.trim());
 
-    if(delISBN !== "") 
+    if(delISBN !== "" || delISBN !== undefined) 
       props.delBook(delISBN);
     else 
       alert("Error: empty ISBN field, cannot delete empty ISBN")

@@ -2,14 +2,17 @@ import './BookList.css'
 
 function BookList(props) {
   const added_books = props.addedBooks;
+  
+
+
   let bookList = added_books.map((book) =>
-    <li>{book.title} by {book.author}</li>
+    <div style={{margin: "40px"}}>{book.title} by {book.author} (ISBN: {book.ISBN})</div> 
   ); 
 
   return (
     <div className="BookList">
       <div id="List">
-        <ul>{bookList}</ul>
+        <div>{bookList}</div>
       </div>      
     </div>
   )

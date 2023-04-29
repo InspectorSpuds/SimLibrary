@@ -56,7 +56,7 @@ class DBHandler {
 
   async insertBook(ISBN, title, author) {
     return new Promise((resolve, reject) => {
-      this.#dbConnection.query(`INSERT INTO SimLibrary.Book values(${ISBN},${title},${author})`, (err, result, fields) => {
+      this.#dbConnection.query(`INSERT INTO SimLibrary.Book VALUES(\'${ISBN}\',\'${title}\',\'${author}\')`, (err, result, fields) => {
         if(err) reject(new DBInitError(err.message));
         resolve("success");
       })

@@ -5,16 +5,23 @@ const express = require("express");
 const {DBHandler} = require('./dbhandler.js')
 
 
-
-
 const app = express()
 const PORT = 4000
-
-let data = 0;
 
 
 //create db connection object and try to connect first and see if that works
 const dbHelper = new DBHandler("127.0.0.1", "ishan", "Ishiraishan#12")
+
+//to use data in body 
+app.use(express.json({
+  type: "*/*"
+}))
+
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "http://localhost:3000"); // update to match the domain you will make the request from
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 
 //routes--------
 app.get('/getBooks', async (req, res) => {
@@ -41,7 +48,8 @@ app.delete('/deleteBook', async (req, res) => {
 
 app.post('/insertBook', async (req, res) => {
   try {
-    const dbResult = await dbHelper.insertBook(req.params['ISBN'],req.params['title'],req.params['author'])
+    const dbResult = await dbHelper.insertBook(req.body.ISBN, req.body.title, req.body.author);
+    res.json(dbResult.resolve)
   } catch(error) {
     res.status(404)
     res.json({message: error.message})
